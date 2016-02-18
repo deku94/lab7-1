@@ -18,4 +18,13 @@ function projectClick(e) {
     // In an event handler, $(this) refers to      
     // the object that triggered the event      
    ga("send", "event", "like", "click");
+   // Feature detects Navigation Timing API support.
+	if (window.performance) {
+  // Gets the number of milliseconds since page load
+  // (and rounds the result since the value must be an integer).
+  		var timeSincePageLoad = Math.round(performance.now());
+
+  // Sends the timing hit to Google Analytics.
+  		ga('send', 'timing', 'like', 'click', timeSincePageLoad);
+	}
 }
